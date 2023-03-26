@@ -128,7 +128,6 @@ function filterAndSizeGraph(g, degreesCnt, candNodes, candEdges) {
 
   for (let ind in candEdges) {
     const edge = candEdges[ind];
-    // if (edge.source === 'image002' && edge.target === '')
     if (!(edge.source in degreesCnt) || !(edge.target in degreesCnt) 
     || degreesCnt[edge.source] == 0 || degreesCnt[edge.target] == 0 ) {
       continue;
@@ -173,7 +172,6 @@ async function parseInput(dot_url, list_url) {
         console.error(error);
         });
     let g = new GraphData();
-    console.log(imgUrls);
 
     return new Promise((resolve, reject) => {
         const degreesCnt = {};
@@ -184,7 +182,6 @@ async function parseInput(dot_url, list_url) {
             parseLine(dotFile[i], imgUrls, degreesCnt, candNodes, candEdges);
         }
         filterAndSizeGraph(g, degreesCnt, candNodes, candEdges);
-        console.log('End of file');
         resolve(g);
     });
 }

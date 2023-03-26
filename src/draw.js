@@ -1,13 +1,10 @@
-import parseInput from './script.js';
+import parseInput from './parse';
 
 const urlParams = new URLSearchParams(window.location.search);
 const dot_url = urlParams.get('dot_url');
 const list_url = urlParams.get('list_url');
-console.log(dot_url);
-console.log(list_url);
 
 const data = await parseInput(dot_url, list_url);
-console.log(data);
 
 let graph = null;
 
