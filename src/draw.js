@@ -64,7 +64,6 @@ if (!graph) {
 }
 
 graph.on('node:mouseenter', (e) => {
-    console.log("mouse enter");
     const item = e.item;
     console.log(item.getModel().degrees);
     changeImgUrl(item);
@@ -115,7 +114,6 @@ function clearAllStats() {
 function changeImgUrl(node) {
     var img = document.getElementById("thumbnail");
     img.src = node.getModel().imgUrl;
-    console.log(node.getModel().imgUrl);
 }
 
 function clearImgUrl() {
