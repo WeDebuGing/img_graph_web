@@ -17,6 +17,6 @@ Replace the following:
 * [/url_list.txt] : url to the image url list file
 
 A working example: 
-http://34.102.61.185/?dot_url=http://34.102.61.185/trevi.dot&list_url=http://34.102.61.185/trevi_url_list.txt
+http://34.102.61.185/?dot_url=http://34.102.61.185/trevi.dot&list_url=http://34.102.61.185/url_list.txt
 
 
