@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<script src="https://gw.alipayobjects.com/os/lib/antv/g6/3.8.5/dist/g6.min.js"></script>
+<script src="./src/draw.js" type="module"></script>
+
+<head>
+    <title>Web Image Graph</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            outline: none;
+            box-sizing: border-box;
+            font-family: 'Work Sans', sans-serif;
+        }
+        img {
+            max-width: 100%;
+            width: auto;
+            height: auto;
+        }
+        .parentContent {
+            display: flex;
+            width: 80%;
+			height: 80%;
+            position: relative;
+            justify-content: space-between;
+            align-items: center;
+            left: 10%;
+            top: 10%;
+            right: 10%;
+        }
+
+        .graphContent {
+            width: 70%;
+            height: 100%;
+        }
+
+        .thumbnailContent {
+            width: 30%;
+            margin-left: 5%;
+            margin-right: 5%;
+            align-items: center;
+            justify-content: center;
+        }
+        
+    </style>
+</head>
+  
+<body>
+    <div>
+    <div class="parentContent">
+        <div class="thumbnailContent">
+            <img
+                  id="thumbnail"
+                  src="./default_thumbnail.jpeg"
+            />
+        </div>
+        <div id="graphContainer" class="graphContent"></div>
+    </div>
+</div>
+</body>
+  
+</html>
