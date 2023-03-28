@@ -64,8 +64,8 @@ if (!graph) {
 }
 
 graph.on('node:mouseenter', (e) => {
+    console.log("mouse enter");
     const item = e.item;
-    console.log(item.getModel().degrees);
     changeImgUrl(item);
     graph.setAutoPaint(false);
     graph.getNodes().forEach(function(node) {
@@ -74,7 +74,8 @@ graph.on('node:mouseenter', (e) => {
     })
     graph.setItemState(item, 'dark', false);
     graph.setItemState(item, 'highlight', true);
-    graph.getEdges().forEach(function(edge) {
+    // const start = Date.now();
+    item.getEdges().forEach(function(edge) {
         if (edge.getSource() === item) {
         graph.setItemState(edge.getTarget(), 'dark', false);
         graph.setItemState(edge.getTarget(), 'highlight', true);
@@ -88,8 +89,9 @@ graph.on('node:mouseenter', (e) => {
         } else {
         graph.setItemState(edge, 'highlight', false);
         }
-        
     });
+    // const end = Date.now();
+    // console.log(`Execution time: ${end - start} ms`);
     graph.paint();
     graph.setAutoPaint(true);
 });
@@ -114,6 +116,7 @@ function clearAllStats() {
 function changeImgUrl(node) {
     var img = document.getElementById("thumbnail");
     img.src = node.getModel().imgUrl;
+    console.log(node.getModel().imgUrl);
 }
 
 function clearImgUrl() {
