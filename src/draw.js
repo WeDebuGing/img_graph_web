@@ -63,7 +63,6 @@ if (!graph) {
 }
 
 graph.on('node:mouseenter', (e) => {
-    console.log("mouse enter");
     const item = e.item;
     changeImgUrl(item);
     graph.setAutoPaint(false);
@@ -130,7 +129,6 @@ function cacheImgs(data) {
         var img = new Image();
         preloadImgs.push(img);
         img.src = imgUrl;
-        console.log("cached img: %s", imgUrl);
     })
 }
 
