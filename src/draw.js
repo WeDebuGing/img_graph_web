@@ -13,7 +13,6 @@ const width = container.offsetWidth;
 const height = container.offsetWidth;
 
 window.addEventListener('resize', () => {
-    console.log("resized");
     graph.render();
     graph.fitView();
 });
@@ -115,8 +114,8 @@ function clearAllStats() {
 
 function changeImgUrl(node) {
     var img = document.getElementById("thumbnail");
-    img.src = node.getModel().imgUrl;
-    console.log(node.getModel().imgUrl);
+    var imgKey = node.getModel().imgUrl;
+    img.src = window.localStorage.getItem(imgKey);
 }
 
 function clearImgUrl() {
@@ -124,7 +123,37 @@ function clearImgUrl() {
     img.src = "./default_thumbnail.jpeg";
 }
 
+function cacheImgs(data) {
+    const {nodes} = data;
+    var img = document.createElement("img");
+    var canvas = document.createElement("canvas");
+    nodes.forEach(function (node) {
+        const imgUrl = node.imgUrl;
+        img.src = imgUrl;
+        canvas.width = img.width;
+        canvas.height = img.height;
+        let ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+        let imageKey = imgUrl;
+        let dataUrl = canvas.toDataURL("image/png");
+        setItem(imageKey, dataUrl);
+    })
+    console.log(window.localStorage);
+}
+
+function setItem(itemKey, itemValue) {
+    try {
+        let now = new Date();
+        let jsonData = JSON.stringify({time: now, data: itemValue});
+        window.localStorage.setItem(itemKey, jsonData);
+        return true;
+    } catch(e) {
+        return false;
+    }
+}
+
 
 graph.data(data);
+cacheImgs(data);
 graph.render();
 graph.fitView();
